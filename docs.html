@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Docs — Conscious</title>
-  <meta name="description" content="Conscious API documentation. Get started in minutes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,17 +18,15 @@
         <span class="logo-text">Conscious</span>
       </a>
       <div class="nav-links">
-        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#input-tax">The Problem</a>
         <a href="index.html#pricing">Pricing</a>
-        <a href="docs.html" style="color: var(--teal)">Docs</a>
+        <a href="docs.html" style="color:var(--teal)">Docs</a>
       </div>
-      <a href="index.html#trial" class="btn btn-nav">Start free trial</a>
-      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html#trial" class="btn btn-nav">Start free trial →</a>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
     <div class="nav-mobile" id="nav-mobile">
-      <a href="index.html#how-it-works">How it works</a>
+      <a href="index.html#input-tax">The Problem</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="docs.html">Docs</a>
       <a href="index.html#trial" class="btn btn-primary">Start free trial</a>
@@ -37,7 +34,6 @@
   </nav>
 
   <div class="docs-layout">
-    <!-- Sidebar -->
     <aside class="docs-sidebar">
       <div class="docs-nav-group">
         <div class="docs-nav-label">Getting Started</div>
@@ -51,150 +47,175 @@
         <a href="#conscious-provider" class="docs-nav-link">ConsciousProvider</a>
         <a href="#conscious-input" class="docs-nav-link">ConsciousInput</a>
         <a href="#use-conscious" class="docs-nav-link">useConscious hook</a>
-        <a href="#ccs" class="docs-nav-link">Confidence Score</a>
+        <a href="#ccs" class="docs-nav-link">Confidence Score (CCS)</a>
       </div>
       <div class="docs-nav-group">
         <div class="docs-nav-label">Configuration</div>
-        <a href="#field-types" class="docs-nav-link">Field Types</a>
+        <a href="#field-types" class="docs-nav-link">Field Type Detection</a>
         <a href="#error-codes" class="docs-nav-link">Error Codes</a>
         <a href="#triggers" class="docs-nav-link">Trigger Keys</a>
       </div>
       <div class="docs-nav-group">
         <div class="docs-nav-label">Guides</div>
         <a href="#crm-guide" class="docs-nav-link">CRM Integration</a>
-        <a href="#security" class="docs-nav-link">Security</a>
+        <a href="#security" class="docs-nav-link">Security Architecture</a>
         <a href="#faq" class="docs-nav-link">FAQ</a>
       </div>
     </aside>
 
-    <!-- Content -->
     <main class="docs-content">
       <h1 id="overview">Conscious Documentation</h1>
-      <p>Conscious is the voice-first input layer for enterprise SaaS. It makes every <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> in your React app voice-aware — without replacing your UI or building a chatbot.</p>
-      <p>The user clicks a field, presses <strong>Fn</strong> or <strong>Ctrl</strong>, and speaks. The transcription commits to the field with a Confidence Score. That's the whole product.</p>
+      <p>Conscious is the voice-first input layer for enterprise SaaS. It eliminates the <strong>Input Tax</strong> — the 2–3 hours per day your users spend typing into forms — by making every <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> voice-aware.</p>
+      <p>The interaction is simple: click a field, press <strong>Fn</strong> or <strong>Ctrl</strong>, speak, stop. The transcription commits with a Confidence Score. That's the entire product surface area.</p>
 
       <h2 id="installation">Installation</h2>
       <pre><code>npm install @conscious/react</code></pre>
-      <p>Requires React 17+. Works with Next.js, Vite, Create React App, and any standard React setup.</p>
+      <p>Requires React 17+. Works with Next.js, Vite, Create React App, Remix, and any standard React environment.</p>
 
       <h2 id="quick-start">Quick Start</h2>
-      <p>Three lines makes your entire app voice-conscious. Wrap your root component with <code>ConsciousProvider</code> and every input and textarea becomes voice-aware automatically.</p>
-      <pre><code><span class="code-import">import</span> { ConsciousProvider } <span class="code-import">from</span> <span class="code-str">'@conscious/react'</span>
+      <p>Wrap your app root with <code>ConsciousProvider</code>. Every <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> in the tree becomes voice-aware automatically — no per-component changes.</p>
+      <pre><code>import { ConsciousProvider } from '@conscious/react'
 
-<span class="code-comment">// app.tsx (or _app.tsx for Next.js)</span>
-<span class="code-tag">&lt;ConsciousProvider</span> <span class="code-attr">proxyUrl</span>=<span class="code-str">"/api/voice"</span><span class="code-tag">&gt;</span>
-  <span class="code-tag">&lt;App /&gt;</span>
-<span class="code-tag">&lt;/ConsciousProvider&gt;</span></code></pre>
-      <p>That's it. Every <code>&lt;input type="text"&gt;</code>, <code>&lt;input type="search"&gt;</code>, and <code>&lt;textarea&gt;</code> now responds to the trigger key.</p>
+// In your app root (App.tsx, _app.tsx, main.tsx, etc.)
+export default function App() {
+  return (
+    &lt;ConsciousProvider proxyUrl="/api/voice"&gt;
+      &lt;YourApp /&gt;
+    &lt;/ConsciousProvider&gt;
+  )
+}</code></pre>
 
       <h2 id="proxy-setup">Proxy Setup</h2>
-      <p>Conscious requires a backend proxy so your STT API key never touches the client. This is a security requirement, not optional. Here's the minimal Next.js API route:</p>
-      <pre><code><span class="code-comment">// pages/api/voice.ts (Next.js)</span>
-<span class="code-import">import</span> { createConsciousProxy } <span class="code-import">from</span> <span class="code-str">'@conscious/proxy'</span>
+      <p>Conscious requires a backend proxy so your STT API key never reaches the browser. This is a security requirement — not optional. Here's the minimal implementation for Next.js:</p>
+      <pre><code>// pages/api/voice.ts  (or app/api/voice/route.ts for App Router)
+import { createConsciousProxy } from '@conscious/proxy'
 
-<span class="code-import">export default</span> createConsciousProxy({
-  apiKey: process.env.WISPR_FLOW_API_KEY,    <span class="code-comment">// Never on the client</span>
-  allowedOrigins: [<span class="code-str">'https://yourapp.com'</span>],
+export default createConsciousProxy({
+  apiKey: process.env.WISPR_FLOW_API_KEY,   // Never exposed to client
+  allowedOrigins: ['https://yourapp.com'],
 })</code></pre>
-      <p>For Express, Fastify, or other Node servers — see the <a href="#">proxy adapters guide</a>. The hosted API option is available on the Growth plan with no proxy setup required.</p>
+      <p>For Express, Fastify, or other runtimes, see the proxy adapter docs. If you're on the Growth or Enterprise plan, you can use the <strong>hosted API</strong> option and skip this setup entirely.</p>
 
       <h2 id="conscious-provider">ConsciousProvider</h2>
-      <p>The root provider that initialises the voice engine and manages WebSocket connections.</p>
-      <pre><code><span class="code-tag">&lt;ConsciousProvider</span>
-  <span class="code-attr">proxyUrl</span>=<span class="code-str">"/api/voice"</span>               <span class="code-comment">// Required: your proxy endpoint</span>
-  <span class="code-attr">triggerKey</span>=<span class="code-str">"fn"</span>                    <span class="code-comment">// "fn" | "ctrl" | "alt" — default: "fn"</span>
-  <span class="code-attr">ccsThreshold</span>={90}                   <span class="code-comment">// Auto-commit threshold — default: 90</span>
-  <span class="code-attr">language</span>=<span class="code-str">"en-US"</span>                   <span class="code-comment">// BCP 47 language tag — default: "en-US"</span>
-  <span class="code-attr">onError</span>={handleError}               <span class="code-comment">// Error callback</span>
-  <span class="code-attr">connectionTimeoutMs</span>={2000}          <span class="code-comment">// Proxy timeout — default: 2000</span>
-<span class="code-tag">&gt;</span>
-  <span class="code-tag">&lt;App /&gt;</span>
-<span class="code-tag">&lt;/ConsciousProvider&gt;</span></code></pre>
+      <p>The root provider that initialises the voice engine, manages WebSocket connections, and exposes context to all child inputs.</p>
+      <pre><code>&lt;ConsciousProvider
+  proxyUrl="/api/voice"        // Required — your backend proxy endpoint
+  triggerKey="fn"              // "fn" | "ctrl" | "alt" | "meta"  (default: "fn")
+  ccsThreshold={90}            // Auto-commit threshold 0–100 (default: 90)
+  language="en-US"             // BCP 47 language tag (default: "en-US")
+  onError={handleError}        // (error: ConsciousError) =&gt; void
+  connectionTimeoutMs={2000}   // Proxy connection timeout ms (default: 2000)
+  debug={false}                // Log internal events to console
+&gt;
+  &lt;App /&gt;
+&lt;/ConsciousProvider&gt;</code></pre>
 
       <h2 id="conscious-input">ConsciousInput</h2>
-      <p>For cases where you want voice input on specific fields only, or need to add context hints:</p>
-      <pre><code><span class="code-import">import</span> { ConsciousInput } <span class="code-import">from</span> <span class="code-str">'@conscious/react'</span>
+      <p>For granular control — voice input on specific fields only, or custom context hints that improve accuracy:</p>
+      <pre><code>import { ConsciousInput } from '@conscious/react'
 
-<span class="code-tag">&lt;ConsciousInput</span>
-  <span class="code-attr">fieldLabel</span>=<span class="code-str">"Account Notes"</span>          <span class="code-comment">// Improves accuracy by ~12%</span>
-  <span class="code-attr">fieldType</span>=<span class="code-str">"notes"</span>                  <span class="code-comment">// "text" | "notes" | "email" | "number" | "date" | "search"</span>
-  <span class="code-attr">placeholder</span>=<span class="code-str">"Type or press Fn..."</span>
-  <span class="code-attr">onChange</span>={handleChange}
-  <span class="code-attr">value</span>={value}
-<span class="code-tag">/&gt;</span></code></pre>
+&lt;ConsciousInput
+  fieldLabel="Account Notes"       // Passed to STT engine — improves accuracy ~12%
+  fieldType="notes"                // "text"|"notes"|"email"|"number"|"date"|"search"
+  placeholder="Type or press Fn..."
+  value={value}
+  onChange={e =&gt; setValue(e.target.value)}
+/&gt;</code></pre>
 
       <h2 id="use-conscious">useConscious hook</h2>
-      <p>For building custom voice UI or accessing the session state:</p>
-      <pre><code><span class="code-import">import</span> { useConscious } <span class="code-import">from</span> <span class="code-str">'@conscious/react'</span>
+      <p>For building custom voice UI, monitoring session state, or triggering voice programmatically:</p>
+      <pre><code>import { useConscious } from '@conscious/react'
 
-<span class="code-import">function</span> MyField() {
-  <span class="code-import">const</span> { isListening, ccs, transcript, startListening, stopListening } = useConscious()
+function CustomVoiceButton() {
+  const {
+    isListening,     // boolean
+    ccs,             // number | null — current Confidence Score
+    transcript,      // string — current draft transcription
+    startListening,  // () =&gt; void
+    stopListening,   // () =&gt; void
+    isConnected,     // boolean — WebSocket proxy connected
+  } = useConscious()
 
-  <span class="code-import">return</span> (
-    <span class="code-tag">&lt;div&gt;</span>
-      {isListening &amp;&amp; <span class="code-tag">&lt;span&gt;</span>Listening... (CCS: {ccs}%)<span class="code-tag">&lt;/span&gt;</span>}
-    <span class="code-tag">&lt;/div&gt;</span>
+  return (
+    &lt;button onClick={isListening ? stopListening : startListening}&gt;
+      {isListening ? `Listening… (CCS: ${ccs}%)` : 'Start voice input'}
+    &lt;/button&gt;
   )
 }</code></pre>
 
       <h2 id="ccs">Conscious Confidence Score (CCS)</h2>
-      <p>Every transcription returns a CCS between 0–100. The score drives the commit behaviour:</p>
+      <p>Every transcription returns a CCS from 0–100. The score drives commit behaviour:</p>
       <ul>
-        <li><strong>≥90 (default)</strong> — Auto-commits to the field. Field border flashes green.</li>
-        <li><strong>70–89</strong> — Shows inline suggestion: "Did you mean X?" with Accept / Edit.</li>
-        <li><strong>&lt;70</strong> — Shows disambiguation panel with 3 ranked options.</li>
+        <li><strong>≥90 (configurable)</strong> — Auto-commits instantly. Field border flashes green. Zero user friction.</li>
+        <li><strong>70–89</strong> — Inline suggestion: <em>"Did you mean Acme Corp?"</em> — one tap to accept or edit.</li>
+        <li><strong>&lt;70</strong> — Disambiguation panel: three ranked options. The user's choice trains the vocabulary model.</li>
       </ul>
-      <p>You control the auto-commit threshold via <code>ccsThreshold</code> on the provider. Medical or compliance apps typically set this to 95+.</p>
+      <p>Set <code>ccsThreshold</code> on the provider to tune for your domain. Medical and compliance apps typically set 95+. Internal tools can go as low as 75.</p>
 
       <h2 id="field-types">Field Type Detection</h2>
-      <p>Conscious auto-detects field types from the <code>type</code> attribute and <code>fieldLabel</code> prop, and adjusts transcription accordingly:</p>
+      <p>Conscious auto-detects field types from the HTML <code>type</code> attribute and the <code>fieldLabel</code> prop, and normalises output accordingly:</p>
       <ul>
-        <li><strong>number / tel</strong> — Outputs digits: "five" → "5"</li>
-        <li><strong>email</strong> — Formats addresses: "john at acme dot com" → "john@acme.com"</li>
-        <li><strong>date</strong> — Parses natural language: "next Tuesday" → "2025-03-04"</li>
-        <li><strong>search</strong> — Strips punctuation, outputs clean query strings</li>
-        <li><strong>text / notes</strong> — Preserves natural sentence structure and punctuation</li>
+        <li><strong>number / tel</strong> — Converts spoken numbers: "five hundred" → "500"</li>
+        <li><strong>email</strong> — Parses addresses: "john at acme dot com" → "john@acme.com"</li>
+        <li><strong>date</strong> — Resolves natural language: "next Tuesday" → "2025-03-04"</li>
+        <li><strong>search</strong> — Strips punctuation, trims query strings</li>
+        <li><strong>text / notes / textarea</strong> — Preserves sentences, punctuation, paragraph structure</li>
       </ul>
 
       <h2 id="error-codes">Error Codes</h2>
-      <p>Handle errors via the <code>onError</code> prop on ConsciousProvider:</p>
-      <pre><code><span class="code-import">const</span> handleError = (error) =&gt; {
+      <p>Handle errors via the <code>onError</code> callback on <code>ConsciousProvider</code>:</p>
+      <pre><code>const handleError = (error: ConsciousError) =&gt; {
   switch (error.code) {
-    <span class="code-import">case</span> <span class="code-str">'MIC_DENIED'</span>:        <span class="code-comment">// User blocked microphone access</span>
-    <span class="code-import">case</span> <span class="code-str">'STT_ERROR'</span>:         <span class="code-comment">// Backend proxy or Wispr Flow failure</span>
-    <span class="code-import">case</span> <span class="code-str">'AUTH_FAILED'</span>:       <span class="code-comment">// Proxy authentication rejected</span>
-    <span class="code-import">case</span> <span class="code-str">'CONNECTION_TIMEOUT'</span>: <span class="code-comment">// Proxy failed to respond in time</span>
-    <span class="code-import">case</span> <span class="code-str">'QUOTA_EXCEEDED'</span>:    <span class="code-comment">// Monthly session limit reached</span>
+    case 'MIC_DENIED':          // User blocked microphone permission
+    case 'STT_ERROR':           // Backend proxy or Wispr Flow API failure
+    case 'AUTH_FAILED':         // Proxy rejected the request (check your API key)
+    case 'CONNECTION_TIMEOUT':  // Proxy did not respond within connectionTimeoutMs
+    case 'QUOTA_EXCEEDED':      // Monthly session limit reached on current plan
+    case 'UNSUPPORTED_BROWSER': // WebRTC not available (IE, older Safari)
   }
 }</code></pre>
+      <p>On <code>MIC_DENIED</code>, the field silently falls back to normal text input. The user sees no error — the Conscious ring around the field simply disappears.</p>
 
       <h2 id="triggers">Trigger Keys</h2>
-      <p>The default trigger is <strong>Fn</strong> (Function key), inspired by Wispr Flow's interaction model. You can change it:</p>
-      <pre><code><span class="code-tag">&lt;ConsciousProvider</span> <span class="code-attr">triggerKey</span>=<span class="code-str">"ctrl"</span><span class="code-tag">&gt;</span> <span class="code-comment">// Left Ctrl</span>
-<span class="code-tag">&lt;ConsciousProvider</span> <span class="code-attr">triggerKey</span>=<span class="code-str">"alt"</span><span class="code-tag">&gt;</span>  <span class="code-comment">// Alt / Option</span>
-<span class="code-tag">&lt;ConsciousProvider</span> <span class="code-attr">triggerKey</span>=<span class="code-str">"fn"</span><span class="code-tag">&gt;</span>   <span class="code-comment">// Fn key (default)</span></code></pre>
-      <p>On macOS, Fn requires the user to set "Press Fn key to: Do Nothing" in System Preferences → Keyboard — otherwise Fn toggles function keys. Ctrl or Alt avoids this friction for cross-platform apps.</p>
+      <p>The default trigger is <strong>Fn</strong> — the interaction model popularised by Wispr Flow, which is training this muscle memory into millions of users. You can override it:</p>
+      <pre><code>&lt;ConsciousProvider triggerKey="fn"&gt;   // Fn key (default) — matches Wispr Flow
+&lt;ConsciousProvider triggerKey="ctrl"&gt; // Left Ctrl — more discoverable cross-platform
+&lt;ConsciousProvider triggerKey="alt"&gt;  // Alt / Option — avoids Fn key macOS quirks</code></pre>
+      <p><strong>macOS note:</strong> Fn requires users to set <em>System Preferences → Keyboard → Press Fn key to: Do Nothing</em>, otherwise Fn toggles function keys. For consumer-facing apps, <code>ctrl</code> is typically safer.</p>
 
       <h2 id="crm-guide">CRM Integration Guide</h2>
-      <p>For CRM apps (Salesforce-style), the highest-impact fields to voice-enable are:</p>
+      <p>CRM apps see the highest ROI from Conscious because sales reps are the canonical "don't want to type after a 45-minute call" user. The fields with the most impact:</p>
       <ul>
         <li>Call notes and activity logs</li>
         <li>Deal descriptions and next steps</li>
         <li>Account notes and contact context</li>
-        <li>Support ticket descriptions</li>
+        <li>Support ticket summaries</li>
+        <li>Forecast notes / deal qualifications</li>
       </ul>
-      <p>Set <code>fieldLabel</code> accurately — it's used by the STT engine to improve accuracy. "Account Notes" outperforms a generic unlabelled field by ~12% CCS on average.</p>
+      <p>Always set <code>fieldLabel</code> on these inputs — it's passed to the STT engine and improves CCS by ~12% for unlabelled fields.</p>
 
       <h2 id="security">Security Architecture</h2>
-      <p>Audio travels from the browser to your backend proxy via an encrypted WebSocket. Your proxy relays it to the STT provider. The API key lives only on your server. End users and their network inspectors never see a third-party domain.</p>
-      <p>Conscious stores zero bytes of audio after processing. The transcript is returned to the client and immediately discarded from our infrastructure. Nothing persists.</p>
+      <p>Audio travels from the browser to your backend proxy via an encrypted WebSocket. Your proxy relays it to the STT provider server-to-server. The API key lives only on your server — it never appears in network inspector, the client bundle, or any browser context.</p>
+      <p>Conscious stores zero bytes of audio after transcription. Audio is processed and discarded from our infrastructure within milliseconds of the session ending. Nothing persists.</p>
+      <p>White-label proxy URLs mean users see <code>api.yourapp.com</code> — never a Conscious or Wispr domain. Your brand, end to end. SOC 2 Type II is on the Q4 roadmap; BAA available for healthcare on Enterprise.</p>
 
       <h2 id="faq">FAQ</h2>
-      <p><strong>Does this work with controlled components?</strong><br />Yes. Conscious fires the native <code>change</code> and <code>input</code> events, so React controlled components (value + onChange) work without any modification.</p>
-      <p><strong>What happens if the microphone is denied?</strong><br />Conscious catches the MIC_DENIED error and calls your onError handler. The field falls back to normal typing with no visual change for the user.</p>
-      <p><strong>Can I use Conscious in a non-React app?</strong><br />Not yet. React is the only supported framework in Phase 1. A vanilla JS adapter and Vue wrapper are on the Phase 2 roadmap.</p>
-      <p><strong>Is the 95% accuracy guarantee per-session or per-word?</strong><br />It's measured as Word Error Rate over a rolling 30-day window across all sessions in your workspace. If the aggregate WER exceeds 5%, that month is refunded.</p>
-      <p><strong>Questions?</strong> Email <a href="mailto:hello@withconscious.dev">hello@withconscious.dev</a> — we respond within 24 hours.</p>
+      <p><strong>Does this work with controlled React components?</strong><br />
+      Yes. Conscious fires native <code>input</code> and <code>change</code> events on commit, so React controlled components (value + onChange) work with zero modification.</p>
+
+      <p><strong>What happens if the microphone is denied?</strong><br />
+      Conscious calls your <code>onError</code> handler with <code>MIC_DENIED</code>, then silently falls back. The field works exactly as before — the user just doesn't get voice input.</p>
+
+      <p><strong>Will my users know they're using Conscious?</strong><br />
+      Only the subtle green ring on the active field. There's no Conscious branding in the UI — the whole experience is white-labelled under your product. Users see "voice input powered by YourApp" not "powered by Conscious."</p>
+
+      <p><strong>Is the 95% accuracy guarantee per session or rolling?</strong><br />
+      It's measured as Word Error Rate over a rolling 30-day window across all sessions in your workspace. If aggregate WER exceeds 5%, that month is refunded. No questions asked — it's in the contract.</p>
+
+      <p><strong>Can I use Conscious with non-React apps?</strong><br />
+      Not yet. React is the only supported framework in Phase 1. A Vue adapter and vanilla JS wrapper are on the Phase 2 roadmap (Q3 2025).</p>
+
+      <p><strong>Questions?</strong> Email <a href="mailto:hello@withconscious.dev">hello@withconscious.dev</a> — we respond within 24 hours and will do your integration with you on a live call.</p>
     </main>
   </div>
 
