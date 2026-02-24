@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conscious — Forms that listen.</title>
+  <meta name="description" content="Conscious makes every text field in your SaaS app voice-aware. Click a field. Press Fn. Speak. Done. 95% accuracy guaranteed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">C</span>
+        <span class="logo-text">Conscious</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#why-not-build">Build vs. Buy</a>
+        <a href="#pricing">Pricing</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a href="#trial" class="btn btn-nav">Start free trial</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#how-it-works">How it works</a>
+      <a href="#why-not-build">Build vs. Buy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="docs.html">Docs</a>
+      <a href="#trial" class="btn btn-primary">Start free trial</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow glow-1"></div>
+      <div class="hero-glow glow-2"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-eyebrow reveal">
+        <span class="eyebrow-dot"></span>
+        <span>Now in private beta — 14 days free</span>
+      </div>
+      <h1 class="hero-headline reveal reveal-delay-1">
+        Forms that<br />
+        <em>listen.</em>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Your users spend 2–3 hours a day typing into your SaaS app.<br class="br-desktop" />
+        Conscious makes every text field voice-aware — in 3 lines of code.
+      </p>
+      <div class="hero-cta reveal reveal-delay-3">
+        <a href="#trial" class="btn btn-primary btn-lg">Start 14-day free trial</a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">See how it works →</a>
+      </div>
+      <div class="hero-trust reveal reveal-delay-4">
+        <span class="trust-item"><span class="trust-check">✓</span> 95% accuracy SLA — money back if we miss it</span>
+        <span class="trust-divider">·</span>
+        <span class="trust-item"><span class="trust-check">✓</span> No DevOps setup required</span>
+        <span class="trust-divider">·</span>
+        <span class="trust-item"><span class="trust-check">✓</span> Live in one sprint</span>
+      </div>
+    </div>
+
+    <!-- Demo field mockup -->
+    <div class="hero-demo reveal reveal-delay-3">
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <div class="demo-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="demo-card-title">CRM — Account Notes</span>
+        </div>
+        <div class="demo-fields">
+          <div class="demo-field-group">
+            <label class="demo-label">Account Name</label>
+            <div class="demo-field demo-field-filled">Acme Corporation</div>
+          </div>
+          <div class="demo-field-group">
+            <label class="demo-label">Notes <span class="conscious-badge">Conscious active</span></label>
+            <div class="demo-field demo-field-active" id="demo-field">
+              <span class="demo-text" id="demo-text"></span>
+              <span class="demo-cursor" id="demo-cursor"></span>
+              <div class="demo-wave" id="demo-wave">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
+            </div>
+            <div class="demo-ccs" id="demo-ccs">
+              <span class="ccs-label">Conscious Confidence Score</span>
+              <span class="ccs-value" id="ccs-value">96%</span>
+              <span class="ccs-status" id="ccs-status">Auto-committing...</span>
+            </div>
+          </div>
+          <div class="demo-field-group">
+            <label class="demo-label">Next Steps</label>
+            <div class="demo-field demo-field-empty">Type or press Fn to speak...</div>
+          </div>
+        </div>
+        <div class="demo-hint">
+          <kbd>Fn</kbd> or <kbd>Ctrl</kbd> &nbsp;→&nbsp; speak &nbsp;→&nbsp; done
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INPUT TAX -->
+  <section class="section-tax">
+    <div class="container">
+      <div class="tax-intro reveal">
+        <p class="section-eyebrow">The problem</p>
+        <h2>Your users are paying an invisible tax.</h2>
+        <p class="section-sub">Every time they open a form, they sit down to type. Most don't finish. The data is bad. The automations break. Onboarding stalls. You blame the users. The users blame the software. The real culprit is the keyboard.</p>
+      </div>
+      <div class="tax-stats">
+        <div class="tax-stat reveal">
+          <div class="stat-number">2–3<span class="stat-unit">hrs</span></div>
+          <div class="stat-label">per day, per user<br />spent typing into forms</div>
+        </div>
+        <div class="tax-stat reveal reveal-delay-1">
+          <div class="stat-number">$30K<span class="stat-unit">+</span></div>
+          <div class="stat-label">MRR opportunity<br />hidden in form friction</div>
+        </div>
+        <div class="tax-stat reveal reveal-delay-2">
+          <div class="stat-number">47<span class="stat-unit">%</span></div>
+          <div class="stat-label">of required fields<br />left incomplete or skipped</div>
+        </div>
+      </div>
+      <div class="tax-consequences reveal">
+        <div class="consequence">
+          <div class="consequence-icon">⚠</div>
+          <div class="consequence-body">
+            <h4>Poor Data Hygiene</h4>
+            <p>Typos, "see notes," skipped required fields. The CRM data nobody trusts — and nobody fixes.</p>
+          </div>
+        </div>
+        <div class="consequence">
+          <div class="consequence-icon">⚠</div>
+          <div class="consequence-body">
+            <h4>Broken Automations</h4>
+            <p>Downstream workflows that fail silently because the input was incomplete. Your users don't know. You find out in the analytics.</p>
+          </div>
+        </div>
+        <div class="consequence">
+          <div class="consequence-icon">⚠</div>
+          <div class="consequence-body">
+            <h4>Onboarding Drag</h4>
+            <p>New users spend weeks learning what to type into a field. Conscious teaches them as they speak. No training required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-how" id="how-it-works">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow light">The solution</p>
+        <h2 class="light">One keypress. Your field listens.</h2>
+        <p class="section-sub light">Conscious doesn't replace your UI. It doesn't add a chatbot. It makes your existing inputs voice-aware — invisibly.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Click any field</h3>
+            <p>The user clicks on a text input in your app — exactly as they always have. Nothing changes visually.</p>
+          </div>
+        </div>
+        <div class="how-connector"></div>
+        <div class="how-step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Press <kbd class="kbd-dark">Fn</kbd> or <kbd class="kbd-dark">Ctrl</kbd></h3>
+            <p>A subtle green waveform appears inside the field. Conscious is listening. No new UI. No popup. Just the field, now aware.</p>
+          </div>
+        </div>
+        <div class="how-connector"></div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Speak naturally</h3>
+            <p>Full sentences, pauses, industry jargon — all handled. Conscious learns your domain vocabulary automatically over time.</p>
+          </div>
+        </div>
+        <div class="how-connector"></div>
+        <div class="how-step reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Field commits</h3>
+            <p>The transcription commits with a Confidence Score. ≥90% auto-commits. Below that, it shows a suggestion. Data stays clean.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CCS EXPLAINER -->
+  <section class="section-ccs">
+    <div class="container">
+      <div class="ccs-grid">
+        <div class="ccs-left reveal">
+          <p class="section-eyebrow">Conscious Confidence Score</p>
+          <h2>We don't just transcribe.<br />We validate context.</h2>
+          <p class="section-sub">Every transcription gets a score. The score drives the UX — not a static threshold you can't control.</p>
+          <div class="ccs-levels">
+            <div class="ccs-level ccs-high">
+              <div class="ccs-level-header">
+                <span class="ccs-pct">≥90%</span>
+                <span class="ccs-name">High Confidence</span>
+                <span class="ccs-action-label green">Auto-commit</span>
+              </div>
+              <p>Words appear and commit instantly. Field turns green. User moves on without touching a key.</p>
+            </div>
+            <div class="ccs-level ccs-mid">
+              <div class="ccs-level-header">
+                <span class="ccs-pct">70–89%</span>
+                <span class="ccs-name">Suggestion Mode</span>
+                <span class="ccs-action-label amber">Review</span>
+              </div>
+              <p>"Did you mean Acme Corp?" — one tap to accept or edit. Never blocks the user.</p>
+            </div>
+            <div class="ccs-level ccs-low">
+              <div class="ccs-level-header">
+                <span class="ccs-pct">&lt;70%</span>
+                <span class="ccs-name">Disambiguation</span>
+                <span class="ccs-action-label red">Choose</span>
+              </div>
+              <p>Three ranked options. User picks. The correction trains the vocabulary model for next time.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ccs-right reveal reveal-delay-2">
+          <div class="ccs-visual">
+            <div class="ccs-card ccs-card-high">
+              <div class="ccs-card-field">Set meeting for Tuesday with the Acme team.</div>
+              <div class="ccs-card-score"><span class="score-dot green-dot"></span> 96% — Auto-committed</div>
+            </div>
+            <div class="ccs-card ccs-card-mid">
+              <div class="ccs-card-field">Account name: <u>Acme Corp</u></div>
+              <div class="ccs-card-suggestion">
+                <span>Did you mean <strong>Acme Corporation</strong>?</span>
+                <div class="suggestion-actions">
+                  <button class="sug-btn sug-accept">Accept</button>
+                  <button class="sug-btn sug-edit">Edit</button>
+                </div>
+              </div>
+              <div class="ccs-card-score"><span class="score-dot amber-dot"></span> 78% — Suggestion</div>
+            </div>
+            <div class="ccs-card ccs-card-low">
+              <div class="ccs-card-field ccs-card-field-red">B2 sales...</div>
+              <div class="ccs-card-options">
+                <div class="dis-option active-option">B2B Sales</div>
+                <div class="dis-option">B2C Sales</div>
+                <div class="dis-option">P2P Sales</div>
+              </div>
+              <div class="ccs-card-score"><span class="score-dot red-dot"></span> 54% — Disambiguation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY / ARCHITECTURE -->
+  <section class="section-security">
+    <div class="container">
+      <div class="security-top reveal">
+        <p class="section-eyebrow">Architecture</p>
+        <h2>Enterprise security<br />by design — not by checkbox.</h2>
+        <p class="section-sub">Every competing voice tool leaks API keys to the client bundle. They show up in the network tab. Any user can find them. Conscious uses a backend proxy architecture so your keys never touch the browser.</p>
+      </div>
+      <div class="arch-diagram reveal">
+        <div class="arch-node arch-node-client">
+          <div class="arch-icon">🖥</div>
+          <div class="arch-node-label">Client / Browser</div>
+          <div class="arch-node-sub">React App + Conscious</div>
+        </div>
+        <div class="arch-arrow">
+          <div class="arch-arrow-line"></div>
+          <div class="arch-arrow-label">Encrypted WebSocket<br />(Audio only)</div>
+        </div>
+        <div class="arch-node arch-node-proxy">
+          <div class="arch-icon">🛡</div>
+          <div class="arch-node-label">Your Backend Proxy</div>
+          <div class="arch-node-sub">api.yourapp.com<br /><strong>API keys live here</strong></div>
+        </div>
+        <div class="arch-arrow">
+          <div class="arch-arrow-line"></div>
+          <div class="arch-arrow-label">STT request<br />(server-to-server)</div>
+        </div>
+        <div class="arch-node arch-node-engine">
+          <div class="arch-icon">🎙</div>
+          <div class="arch-node-label">Voice Engine</div>
+          <div class="arch-node-sub">Wispr Flow API<br />(invisible to users)</div>
+        </div>
+      </div>
+      <div class="security-pillars reveal">
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <h4>Zero PII stored</h4>
+          <p>Conscious stores zero bytes of audio. Audio flows through and is discarded. Nothing persists on our infrastructure.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🛡</div>
+          <h4>Client isolation</h4>
+          <p>API keys never touch the client bundle. They're invisible to the browser network inspector. No exposure surface.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🏷</div>
+          <h4>White-label network</h4>
+          <p>Users see requests to api.yourapp.com — never a third-party domain. Your brand, end to end.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✅</div>
+          <h4>SOC 2 ready arch</h4>
+          <p>Designed for compliance from day one. SOC 2 Type II audit on the roadmap for Q4. BAA available for healthcare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD VS BUY -->
+  <section class="section-bvb" id="why-not-build">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Build vs. Buy</p>
+        <h2>Your engineers have better<br />things to build.</h2>
+        <p class="section-sub">STT prototypes take a sprint. Production takes six months. We've already done the six months — so you don't have to.</p>
+      </div>
+      <div class="bvb-grid reveal">
+        <div class="bvb-col bvb-col-build">
+          <h3 class="bvb-heading build-heading">Building it yourself</h3>
+          <ul class="bvb-list">
+            <li class="bvb-item bvb-bad">Prototype takes 1 sprint. Production takes 6.</li>
+            <li class="bvb-item bvb-bad">WebSocket audio proxy: 2 weeks of senior eng time</li>
+            <li class="bvb-item bvb-bad">AudioWorklet threading: another sprint</li>
+            <li class="bvb-item bvb-bad">Field-type detection and validation: ongoing</li>
+            <li class="bvb-item bvb-bad">Accuracy drift, edge cases, domain vocabulary</li>
+            <li class="bvb-item bvb-bad">Security patches every time the STT provider updates</li>
+            <li class="bvb-item bvb-bad">No SLA. Your team owns every failure.</li>
+            <li class="bvb-item bvb-bad">No PM will commit to 95% accuracy. In writing.</li>
+          </ul>
+        </div>
+        <div class="bvb-col bvb-col-conscious">
+          <h3 class="bvb-heading conscious-heading">Using Conscious</h3>
+          <ul class="bvb-list">
+            <li class="bvb-item bvb-good">14-day free trial. Live in one sprint.</li>
+            <li class="bvb-item bvb-good">npm install. ConsciousProvider wraps your app.</li>
+            <li class="bvb-item bvb-good">Hosted API — no DevOps required to start.</li>
+            <li class="bvb-item bvb-good">Field-type detection included and improving weekly.</li>
+            <li class="bvb-item bvb-good">Adaptive vocabulary learns your domain automatically.</li>
+            <li class="bvb-item bvb-good">We ship the security patches. Not your team.</li>
+            <li class="bvb-item bvb-good">95% accuracy SLA — money back if we miss it.</li>
+            <li class="bvb-item bvb-good bvb-highlight">We commit to that number. In the contract.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE SNIPPET -->
+  <section class="section-code">
+    <div class="container">
+      <div class="code-intro reveal">
+        <p class="section-eyebrow light">Integration</p>
+        <h2 class="light">3 lines of code.<br />Every field, voice-aware.</h2>
+      </div>
+      <div class="code-block reveal reveal-delay-1">
+        <div class="code-tabs">
+          <button class="code-tab active" data-tab="install">Install</button>
+          <button class="code-tab" data-tab="wrap">Wrap</button>
+          <button class="code-tab" data-tab="done">Done</button>
+        </div>
+        <div class="code-pane active" id="tab-install">
+          <pre><code><span class="code-comment">// 1. Install the SDK</span>
+<span class="code-cmd">npm install @conscious/react</span></code></pre>
+        </div>
+        <div class="code-pane" id="tab-wrap">
+          <pre><code><span class="code-comment">// 2. Wrap your app</span>
+<span class="code-import">import</span> { ConsciousProvider } <span class="code-import">from</span> <span class="code-str">'@conscious/react'</span>
+
+<span class="code-tag">&lt;ConsciousProvider</span> <span class="code-attr">proxyUrl</span>=<span class="code-str">"/api/voice"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;App /&gt;</span>
+<span class="code-tag">&lt;/ConsciousProvider&gt;</span></code></pre>
+        </div>
+        <div class="code-pane" id="tab-done">
+          <pre><code><span class="code-comment">// 3. That's it. Every input and textarea</span>
+<span class="code-comment">//    in your app is now voice-aware.</span>
+<span class="code-comment">//    No other changes required.</span>
+
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-str">"text"</span> <span class="code-tag">/&gt;</span>          <span class="code-comment">// ✓ Voice-aware</span>
+<span class="code-tag">&lt;textarea</span> <span class="code-tag">/&gt;</span>                  <span class="code-comment">// ✓ Voice-aware</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-str">"search"</span> <span class="code-tag">/&gt;</span>        <span class="code-comment">// ✓ Voice-aware</span></code></pre>
+        </div>
+      </div>
+      <p class="code-note reveal reveal-delay-2 light">Auto-detects all inputs and textareas. Works with React 17+. Field-type aware — speaks "five" into a notes field, "5" into a number field.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section-pricing" id="pricing">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Pricing</p>
+        <h2>Start free. Pay when you're convinced.</h2>
+        <p class="section-sub">All plans include the 95% accuracy SLA. We're not hiding that in the fine print.</p>
+      </div>
+      <div class="pricing-grid reveal reveal-delay-1">
+        <div class="pricing-card">
+          <div class="pricing-tier">Developer</div>
+          <div class="pricing-price">Free</div>
+          <div class="pricing-period">forever</div>
+          <ul class="pricing-features">
+            <li>1 app</li>
+            <li>500 sessions / month</li>
+            <li>Hosted API (rate-limited)</li>
+            <li>Community support</li>
+            <li>npm package access</li>
+          </ul>
+          <a href="#trial" class="btn btn-outline btn-full">Get started</a>
+        </div>
+        <div class="pricing-card pricing-card-featured">
+          <div class="pricing-badge">Most popular</div>
+          <div class="pricing-tier">Growth</div>
+          <div class="pricing-price">$299<span class="pricing-price-sub">/mo</span></div>
+          <div class="pricing-period">per workspace</div>
+          <ul class="pricing-features">
+            <li>5 apps</li>
+            <li>50,000 sessions / month</li>
+            <li>White-label proxy URL</li>
+            <li>CCS Confidence Score</li>
+            <li>Priority support</li>
+            <li class="feature-highlight">95% accuracy SLA — money back guarantee</li>
+          </ul>
+          <a href="#trial" class="btn btn-primary btn-full">Start 14-day free trial</a>
+          <p class="pricing-note">No card required. No DevOps needed.</p>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-price">Custom</div>
+          <div class="pricing-period">annual contract</div>
+          <ul class="pricing-features">
+            <li>Unlimited apps + sessions</li>
+            <li>SOC 2 Type II (Q4)</li>
+            <li>BAA for healthcare</li>
+            <li>Custom SLA</li>
+            <li>Dedicated engineering support</li>
+          </ul>
+          <a href="mailto:hello@withconscious.dev" class="btn btn-outline btn-full">Talk to us</a>
+        </div>
+      </div>
+      <div class="pricing-roi reveal">
+        <div class="roi-inner">
+          <span class="roi-label">The math:</span>
+          <span class="roi-text">$0.0011 per session × 40% time savings × 2.5 hrs/day = <strong>Growth tier pays for itself in under 48 hours.</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIAL CTA -->
+  <section class="section-trial" id="trial">
+    <div class="trial-bg">
+      <div class="trial-glow"></div>
+    </div>
+    <div class="container trial-content">
+      <div class="reveal">
+        <h2 class="trial-headline">Ready to make your<br /><em>forms listen?</em></h2>
+        <p class="trial-sub">14 days, unlimited sessions, no DevOps setup.<br />We'll do the integration with you personally.</p>
+      </div>
+      <form class="trial-form reveal reveal-delay-1" id="trial-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" class="form-input" required />
+          <input type="email" placeholder="Work email" class="form-input" required />
+          <input type="text" placeholder="Company / product" class="form-input" required />
+          <button type="submit" class="btn btn-primary btn-lg">Start free trial →</button>
+        </div>
+        <p class="form-note">We respond within 24 hours with your API key and a calendar link to do the integration together.</p>
+      </form>
+      <div class="trial-guarantee reveal reveal-delay-2">
+        <div class="guarantee-badge">95%</div>
+        <div class="guarantee-text">
+          <strong>Accuracy Guarantee</strong>
+          <p>If Conscious speech-to-text accuracy falls below 95% on your domain for any rolling 30-day period, we refund that month. No questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-mark">C</span>
+          <span class="logo-text">Conscious</span>
+        </a>
+        <p class="footer-tagline">Forms that listen.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#how-it-works">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="docs.html">Documentation</a>
+          <a href="#trial">Free trial</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="mailto:hello@withconscious.dev">Contact</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2025 Conscious. All rights reserved.</span>
+        <span>withconscious.dev</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
