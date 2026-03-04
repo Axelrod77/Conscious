@@ -1,0 +1,36 @@
+{
+  "name": "conscious",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r --filter @conscious/core --filter @conscious/react build",
+    "dev": "concurrently -n demo,proxy -c blue,green \"pnpm --filter @conscious/demo dev\" \"pnpm --filter @conscious/proxy-server dev\"",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "pnpm -r exec tsc --noEmit",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test": "pnpm lint && pnpm typecheck && pnpm test:unit",
+    "clean": "rm -rf packages/core/dist packages/react/dist apps/demo/.next",
+    "changeset": "changeset",
+    "version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  }
+}
