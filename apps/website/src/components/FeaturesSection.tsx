@@ -10,37 +10,31 @@ const colSpanClass: Record<number, string> = {
 
 const features = [
   {
-    icon: "\uD83C\uDFA4",
     title: "White-Label by Default",
     body: "Your domain. Your brand. Zero vendor bleed. The STT engine never touches the client.",
     cols: 4,
   },
   {
-    icon: "\u26A1",
     title: "<300ms Latency",
     body: "Audio streams in 1-second PCM chunks over WebSocket. Partials appear in real time.",
     cols: 4,
   },
   {
-    icon: "\uD83D\uDD12",
     title: "API Key Never in Browser",
     body: "Architecture enforces security. The proxy layer is not optional \u2014 it\u2019s load-bearing.",
     cols: 4,
   },
   {
-    icon: "\uD83E\uDDE0",
     title: "Conscious Confidence Score",
     body: "Our 3-signal CCS decides: auto-commit, suggest, or disambiguate. No bad writes.",
     cols: 6,
   },
   {
-    icon: "\uD83E\udDE9",
     title: "Field-Type Aware",
     body: "10-step detection tree. \u2018Forty two\u2019 becomes 42. \u2018John at gmail dot com\u2019 becomes john@gmail.com.",
     cols: 6,
   },
   {
-    icon: "\uD83D\uDD04",
     title: "Swap STT in One Line",
     body: "ISTTProvider interface means Deepgram, AssemblyAI, or your own engine \u2014 zero SDK changes.",
     cols: 12,
@@ -84,10 +78,7 @@ export default function FeaturesSection() {
               viewport={{ once: true, margin: "-100px" }}
               className={`bg-surface border border-stroke rounded-3xl p-7 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)] ${colSpanClass[feature.cols]}`}
             >
-              <div className="bg-bg rounded-xl w-10 h-10 flex items-center justify-center text-xl border border-stroke">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-text-primary mt-4 mb-2">
+              <h3 className="text-xl font-semibold text-text-primary mb-2">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">

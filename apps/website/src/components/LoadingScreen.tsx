@@ -29,11 +29,11 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       if (startRef.current === null) startRef.current = timestamp;
       const elapsed = timestamp - startRef.current;
       const progress = Math.min(elapsed / DURATION_MS, 1);
-      const value = Math.round(progress * 100);
+      const value = Math.round(progress * 150);
 
       setCount(value);
 
-      if (value >= 100) {
+      if (value >= 150) {
         handleComplete();
         return;
       }
@@ -97,7 +97,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           <div
             className="h-full accent-gradient origin-left"
             style={{
-              transform: `scaleX(${count / 100})`,
+              transform: `scaleX(${count / 150})`,
               boxShadow: "0 0 8px rgba(0, 200, 150, 0.35)",
               transition: "transform 0.05s linear",
             }}

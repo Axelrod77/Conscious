@@ -16,7 +16,6 @@ const steps = [
     title: "Install",
     body: "One command. One provider. Wrap your app root.",
     code: 'npm install @conscious/react\n\n<ConsciousProvider apiUrl="/api/voice">\n  {children}\n</ConsciousProvider>',
-    cols: 5,
     gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
   },
   {
@@ -24,7 +23,6 @@ const steps = [
     title: "Replace",
     body: "Swap any <input> for <ConsciousInput>. That's it.",
     code: '// Before\n<input type="text" />\n\n// After\n<ConsciousInput type="text" />',
-    cols: 7,
     gradient: "from-sky-500/20 via-blue-500/10 to-transparent",
   },
   {
@@ -32,7 +30,6 @@ const steps = [
     title: "Ship",
     body: "Users hold Space, speak, release — text appears. White-labeled, your brand, your domain.",
     code: "// Hold Space → speak → release\n// <300ms latency, 90%+ confidence\n// White-labeled — swap STT engines in 1 line",
-    cols: 12,
     gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
   },
 ];
@@ -65,7 +62,7 @@ export default function HowItWorksSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {steps.map((s, i) => (
             <motion.div
               key={s.step}
@@ -73,7 +70,7 @@ export default function HowItWorksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: i * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`${colSpanClass[s.cols]} bg-surface border border-stroke rounded-3xl overflow-hidden p-7 relative transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)]`}
+              className="bg-surface border border-stroke rounded-3xl overflow-hidden p-7 relative transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)]"
             >
               <div
                 className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${s.gradient} rounded-3xl pointer-events-none opacity-60`}
