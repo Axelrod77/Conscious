@@ -2,13 +2,21 @@
 
 import { motion } from "framer-motion";
 
+const colSpanClass: Record<number, string> = {
+  4: "md:col-span-4",
+  5: "md:col-span-5",
+  6: "md:col-span-6",
+  7: "md:col-span-7",
+  12: "md:col-span-12",
+};
+
 const steps = [
   {
     step: "01",
     title: "Install",
     body: "One command. One provider. Wrap your app root.",
     code: 'npm install @conscious/react\n\n<ConsciousProvider apiUrl="/api/voice">\n  {children}\n</ConsciousProvider>',
-    cols: 7,
+    cols: 5,
     gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
   },
   {
@@ -16,24 +24,16 @@ const steps = [
     title: "Replace",
     body: "Swap any <input> for <ConsciousInput>. That's it.",
     code: '// Before\n<input type="text" />\n\n// After\n<ConsciousInput type="text" />',
-    cols: 5,
+    cols: 7,
     gradient: "from-sky-500/20 via-blue-500/10 to-transparent",
   },
   {
     step: "03",
-    title: "Speak",
-    body: "Users hold Space. Speak. Release. Text appears.",
-    code: "// Hold Space → speak → release\n// <300ms transcription latency\n// Auto-commits at 90%+ confidence",
-    cols: 5,
-    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
-  },
-  {
-    step: "04",
     title: "Ship",
-    body: "Your brand. Your domain. Wispr Flow never visible.",
-    code: "// White-labeled\n// API key server-side only\n// Swap STT engines: 1 line",
-    cols: 7,
-    gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
+    body: "Users hold Space, speak, release — text appears. White-labeled, your brand, your domain.",
+    code: "// Hold Space → speak → release\n// <300ms latency, 90%+ confidence\n// White-labeled — swap STT engines in 1 line",
+    cols: 12,
+    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function HowItWorksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: i * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`md:col-span-${s.cols} bg-surface border border-stroke rounded-3xl overflow-hidden p-7 relative transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)]`}
+              className={`${colSpanClass[s.cols]} bg-surface border border-stroke rounded-3xl overflow-hidden p-7 relative transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)]`}
             >
               <div
                 className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${s.gradient} rounded-3xl pointer-events-none opacity-60`}

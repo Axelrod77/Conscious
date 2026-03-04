@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 
+const colSpanClass: Record<number, string> = {
+  4: "md:col-span-4",
+  6: "md:col-span-6",
+  12: "md:col-span-12",
+};
+
 const features = [
   {
     icon: "\uD83C\uDFA4",
@@ -76,7 +82,7 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: i * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`bg-surface border border-stroke rounded-3xl p-7 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)] md:col-span-${feature.cols}`}
+              className={`bg-surface border border-stroke rounded-3xl p-7 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_0_1px_rgba(0,200,150,0.3)] ${colSpanClass[feature.cols]}`}
             >
               <div className="bg-bg rounded-xl w-10 h-10 flex items-center justify-center text-xl border border-stroke">
                 {feature.icon}
